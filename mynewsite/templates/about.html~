@@ -1,0 +1,15 @@
+ <!DOCTYPE html>
+  <html>
+   <head>
+    <meta charset='utf-8'>
+    <title>About Myself</title>
+   </head>
+   <body>
+    <h2>Eva Frost</h2>
+    <hr>
+    <p>
+    Hi, I am Eva Frost. Nice to meet you!
+    </p>
+    <em>Today's Word: {{ quote }}</em>
+   </body>
+  </html>

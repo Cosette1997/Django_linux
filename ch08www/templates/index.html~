@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}I have words to say{% endblock %}
+{% block content %}
+<div class='container'>
+ {% for message in messages %}
+   <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+ {% endfor %}
+<div class='row'>
+  <div class='col-md-12'>
+    <div class="panel panel-default">
+       <div class='panel-heading' align=center>
+          <h3>{{ username | default:"My" }} primary diary</h3>
+       </div>
+    </div>
+  </div>
+</div>
+  
+</div>
+{% endblock %}

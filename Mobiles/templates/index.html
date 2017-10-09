@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}DJ Mobile Phone Market{% endblock %}
+{% block content %}
+<div class='container' align=center>
+  {% for p in products %}
+   {% if forloop.first %}
+    <table>
+      <tr bgcolor='#cccccc'>
+       <td width=250>Phone</td>
+       <td width=150>Model</td>
+       <td width=50>Year</td>
+       <td>Price</td></tr>
+   {% endif %}
+   <tr bgcolor="{% cycle '#ffccff' '#ccffcc' %}">
+     <td><a href="{% url 'detail-url' p.id %}">{{ p.nickname }}</a></td>
+     <td>{{ p.pmodel.maker.name }}({{ p.pmodel.maker.country }})/{{ p.pmodel }}</td>
+     <td>{{ p.year }}</td>
+     <td align=right>{{ p.price }}</td>
+   </tr>
+   {% if forloop.last %}
+    </table>
+   {% endif %}
+  {% empty %}
+   <h3>No ZhongGu Phone on sale, we are sorry.</h3>
+  {% endfor %}
+</div>
+{% endblock %}

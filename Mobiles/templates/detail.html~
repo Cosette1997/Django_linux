@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ product.nickname | default:"Cannot find" }}{% endblock %}
+{% block content %}
+  <div class='container' align=center>
+  {% if product %}
+    <table>
+     <tr><td align=center><h3>{{ product.nickname }}</h3></td></tr>
+     <tr><td align=center>{{ product.description }}</td></tr>
+     <tr><td align=center>Made in BC{{ product.year }}</td></tr>
+     <tr><td align=center>Price: NT${{ product.price }}</td></tr>
+     {% for image in images %}
+       {% if forloop.first %}
+         <tr><td align=center>
+       {% endif %}
+         <img src='{{image.url}}' width=350><br>
+       {% if forloop.last %}
+         </td></tr>
+       {% endif %}
+     {% empty %}
+       <tr><td align=center>No Images</td></tr>
+     {% endfor %}
+    </table>
+  {% else %}
+  <h2>Cannot find</h2>
+  {% endif %}
+  </div>
+{% endblock %}

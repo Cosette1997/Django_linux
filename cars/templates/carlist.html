@@ -1,0 +1,36 @@
+{% load humanize %}
+<!DOCTYPE html>
+ <html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Cars Market</title>
+  </head>
+  <body>
+    <h2>Welcome To Car Market</h2>
+    <table>
+      <tr>
+       {% for m in car_maker %}
+        <td bgcolor="#ccffcc">
+          <a href="{% url 'carlist-url' forloop.counter0 %}">{{ m }}</a>
+        </td>
+       {% endfor %}
+      </tr>
+    </table>
+    {% for c in cars %}
+       {% if forloop.first %}
+          <table>
+         <tr><td>Factory</td><td>Car Style</td><td>Price</td></tr>
+       {% endif %}
+       <tr bgcolor="{% cycle '#eeeeee' '#cccccc' %}">
+        <td>{{ maker_name }}</td><td>{{ c.model }}</td>
+        <td align='right'>NT${{ c.price | floatformat:2 | intcomma }}</td>
+       </tr>
+      {% if forloop.last %}
+       </table>
+      {% endif %}
+    {% empty %}
+      <h3>Factory<em>{{ maker_name }}</em> has no car recently</h3>
+    {% endfor %}
+    {{ value | yesno:"Yes,No,Void"}}
+  </body>
+ </html>

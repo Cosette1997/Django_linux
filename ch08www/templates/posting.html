@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}I have words to say{% endblock %}
+{% block content %}
+<div class='container'>
+ {% for message in messages %}
+   <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+ {% endfor %}
+ <form name="my form" action='' method='POST'>
+   {% csrf_token %}
+   <table>
+    {{ post_form.as_table }}
+   </table>
+   <input type='submit' value='POST'>
+   <input type='reset' value='RESET'>
+ </form>
+
+</div>
+{% endblock %}

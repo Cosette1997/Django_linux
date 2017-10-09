@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}I have words to say{% endblock %}
+{% block content %}
+<div class='container'>
+ {% for message in messages %}
+   <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+ {% endfor %}
+<div class='row'>
+  <div class='col-md-12'>
+    <div class="panel panel-default">
+       <div class='panel-heading' align=center>
+          <h3>{{ username | default:"My" }} primary diary</h3>
+       </div>
+    </div>
+  </div>
+</div>
+  {% for diary in diaries %}
+   {% cycle "<div class='row'>" "" ""  %}
+   <div class='col-md-4'>
+   <div class="panel panel-primary">
+      <div class='panel-heading' align="center">
+        {{ diary.ddate }}
+        </div>
+      <div class='panel-body'>{{ diary.note | linebreaks }}</div>
+      <div class='panel-footer'>
+        Today I have spent {{ diary.budget }}$. My weight is {{ diary.weight }} kg.
+      </div>
+   </div>
+   {% cycle "" "" "</div>"%}
+   {% empty %}
+      <h3><em>You can use this system if you've login.</em></h3>
+   {% endfor %}
+</div>
+{% endblock %}

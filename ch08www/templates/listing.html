@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}I have words to say{% endblock %}
+{% block content %}
+<div class='container'>
+  <div class='row'>
+  <div class='col-md-12'>
+    <div class="panel panel-default">
+       <div class='panel-heading' align=center>
+          <h3>~~I have some words to say~~</h3>
+       </div>
+    </div>
+  </div>
+</div>
+   {% for p in posts %}
+   {% cycle "<div class='row'> <div class='col-md-6'>" "<div class='col-md-6'>" %}
+   <div class="panel panel-primary">
+      <div class='panel-heading'>
+         <table width='100%'>
+           <tr>
+               <td>
+                    [{{p.nickname}}] feels {{p.mood}}
+               </td>
+               <td align=right>
+                 <i><small>{{ p.pub_time }}</small></i>  
+               </td>
+           </tr>
+         </table>
+      </div>
+      <div class='panel-body'>{{ p.message | linebreaks }}</div>
+   </div>
+   {% cycle "" "</div>"%}
+{% endfor %}
+</div>
+
+{% endblock %}

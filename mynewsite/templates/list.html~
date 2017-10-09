@@ -1,0 +1,21 @@
+ <!DOCTYPE html>
+  <html>
+   <head>
+    <meta charset='utf-8'>
+    <title>Mobile Phone List</title>
+   </head>
+   <body>
+    <h2>Here is the list of mobile phones on sale.</h2>
+    <hr>
+    <table width=400 border=1 bgcolor='#ccffcc'>
+      <tr><td>Name</td><td>Price</td><td>Amount</td></tr>
+      {% for p in products %}
+       <tr>
+         <td>{{ p.name }}</td>
+         <td>{{ p.price }}</td>
+         <td>{{ p.qty }}</td>
+       </tr>
+      {% endfor %}
+    </table>
+   </body>
+  </html>
